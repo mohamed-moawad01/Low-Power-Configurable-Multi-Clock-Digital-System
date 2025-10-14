@@ -1,0 +1,1978 @@
+                                        
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+                                        
+                 Version K-2015.06 for linux64 - May 28, 2015 
+                                        
+                    Copyright (c) 1988 - 2015 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+Initializing gui preferences from file  /home/IC/.synopsys_dv_prefs.tcl
+########################### Define Top Module ############################
+set top_module SYS_TOP
+SYS_TOP
+##################### Define Working Library Directory ######################
+define_design_lib work -path ./work
+1
+############################# Formality Setup File ##########################
+set_svf "$top_module.svf"
+1
+################## Design Compiler Library Files #setup ######################
+puts "###########################################"
+###########################################
+puts "#      #setting Design Libraries          #"
+#      #setting Design Libraries          #
+puts "###########################################"
+###########################################
+#Add the path of the libraries to the search_path variable
+lappend search_path /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys
+. /opt/Synopsys/Synplify2015/libraries/syn /opt/Synopsys/Synplify2015/minpower/syn /opt/Synopsys/Synplify2015/dw/syn_ver /opt/Synopsys/Synplify2015/dw/sim_ver /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys
+set SSLIB "scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db"
+scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db
+set TTLIB "scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db"
+scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db
+set FFLIB "scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db"
+scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db
+## Standard Cell libraries 
+set target_library [list $SSLIB $TTLIB $FFLIB]
+scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db
+## Standard Cell & Hard Macros libraries 
+set link_library [list * $SSLIB $TTLIB $FFLIB]  
+* scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db
+######################## Reading RTL Files #################################
+puts "###########################################"
+###########################################
+puts "#             Reading RTL Files           #"
+#             Reading RTL Files           #
+puts "###########################################"
+###########################################
+set file_format_v verilog 
+verilog
+set fh_v [open System_v.lst r+]
+file11
+set rtl_v [read $fh_v]
+/home/IC/integrated_system_syn/RTL/ALU/ALU.v
+/home/IC/integrated_system_syn/RTL/ASYC_FIFO/ASYC_FIFO.v
+/home/IC/integrated_system_syn/RTL/ASYC_FIFO/FIFO_Memory.v
+/home/IC/integrated_system_syn/RTL/ASYC_FIFO/Rptr_empty.v
+/home/IC/integrated_system_syn/RTL/ASYC_FIFO/SYNC.v
+/home/IC/integrated_system_syn/RTL/ASYC_FIFO/Wptr_full.v
+/home/IC/integrated_system_syn/RTL/ClkDiv/ClkDiv.v
+/home/IC/integrated_system_syn/RTL/Clock_Gate/Clock_Gating.v
+/home/IC/integrated_system_syn/RTL/DATA_SYNC/DATA_SYNC.v
+/home/IC/integrated_system_syn/RTL/Prescale_Mux/Prescale_Mux.v
+/home/IC/integrated_system_syn/RTL/Pulse_Gen/Pulse_Gen.v
+/home/IC/integrated_system_syn/RTL/REGFile/Reg_File.v
+/home/IC/integrated_system_syn/RTL/RST_SYNC/RST_SYNC.v
+/home/IC/integrated_system_syn/RTL/UART/UART_RX/Data_sampling.v
+/home/IC/integrated_system_syn/RTL/UART/UART_RX/Deserializer.v
+/home/IC/integrated_system_syn/RTL/UART/UART_RX/Edge_bit_counter.v
+/home/IC/integrated_system_syn/RTL/UART/UART_RX/Parity_Check.v
+/home/IC/integrated_system_syn/RTL/UART/UART_RX/Stop_Check.v
+/home/IC/integrated_system_syn/RTL/UART/UART_RX/Strt_Check.v
+/home/IC/integrated_system_syn/RTL/UART/UART_RX/UART_RX.v
+/home/IC/integrated_system_syn/RTL/UART/UART_TX/MUX.v
+/home/IC/integrated_system_syn/RTL/UART/UART_TX/Parity_Calc.v
+/home/IC/integrated_system_syn/RTL/UART/UART_TX/Serializer.v
+/home/IC/integrated_system_syn/RTL/UART/UART_TX/UART_TX.v
+/home/IC/integrated_system_syn/RTL/TOP/SYS_TOP_dft.v
+/home/IC/integrated_system_syn/RTL/DFT_Mux/dft_mux.v
+
+
+set designs_v ""
+regsub -all "\n" $rtl_v " " designs_v
+27
+set file_format_sv sverilog 
+sverilog
+set fh_sv [open System_sv.lst r+]
+file12
+set rtl_sv [read $fh_sv]
+/home/IC/integrated_system_syn/RTL/CTRL/RX_FSM.sv
+/home/IC/integrated_system_syn/RTL/CTRL/SYS_CTRL.sv
+/home/IC/integrated_system_syn/RTL/CTRL/TX_FSM.sv
+
+set designs_sv ""
+regsub -all "\n" $rtl_sv " " designs_sv
+3
+analyze -format $file_format_v $designs_v
+Running PRESTO HDLC
+Compiling source file /home/IC/integrated_system_syn/RTL/ALU/ALU.v
+Compiling source file /home/IC/integrated_system_syn/RTL/ASYC_FIFO/ASYC_FIFO.v
+Compiling source file /home/IC/integrated_system_syn/RTL/ASYC_FIFO/FIFO_Memory.v
+Compiling source file /home/IC/integrated_system_syn/RTL/ASYC_FIFO/Rptr_empty.v
+Compiling source file /home/IC/integrated_system_syn/RTL/ASYC_FIFO/SYNC.v
+Compiling source file /home/IC/integrated_system_syn/RTL/ASYC_FIFO/Wptr_full.v
+Compiling source file /home/IC/integrated_system_syn/RTL/ClkDiv/ClkDiv.v
+Compiling source file /home/IC/integrated_system_syn/RTL/Clock_Gate/Clock_Gating.v
+Compiling source file /home/IC/integrated_system_syn/RTL/DATA_SYNC/DATA_SYNC.v
+Compiling source file /home/IC/integrated_system_syn/RTL/Prescale_Mux/Prescale_Mux.v
+Compiling source file /home/IC/integrated_system_syn/RTL/Pulse_Gen/Pulse_Gen.v
+Compiling source file /home/IC/integrated_system_syn/RTL/REGFile/Reg_File.v
+Compiling source file /home/IC/integrated_system_syn/RTL/RST_SYNC/RST_SYNC.v
+Compiling source file /home/IC/integrated_system_syn/RTL/UART/UART_RX/Data_sampling.v
+Compiling source file /home/IC/integrated_system_syn/RTL/UART/UART_RX/Deserializer.v
+Compiling source file /home/IC/integrated_system_syn/RTL/UART/UART_RX/Edge_bit_counter.v
+Compiling source file /home/IC/integrated_system_syn/RTL/UART/UART_RX/Parity_Check.v
+Compiling source file /home/IC/integrated_system_syn/RTL/UART/UART_RX/Stop_Check.v
+Compiling source file /home/IC/integrated_system_syn/RTL/UART/UART_RX/Strt_Check.v
+Compiling source file /home/IC/integrated_system_syn/RTL/UART/UART_RX/UART_RX.v
+Compiling source file /home/IC/integrated_system_syn/RTL/UART/UART_TX/MUX.v
+Compiling source file /home/IC/integrated_system_syn/RTL/UART/UART_TX/Parity_Calc.v
+Compiling source file /home/IC/integrated_system_syn/RTL/UART/UART_TX/Serializer.v
+Compiling source file /home/IC/integrated_system_syn/RTL/UART/UART_TX/UART_TX.v
+Compiling source file /home/IC/integrated_system_syn/RTL/TOP/SYS_TOP_dft.v
+Compiling source file /home/IC/integrated_system_syn/RTL/DFT_Mux/dft_mux.v
+Presto compilation completed successfully.
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db'
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db'
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db'
+1
+analyze -format $file_format_sv $designs_sv
+Running PRESTO HDLC
+Compiling source file /home/IC/integrated_system_syn/RTL/CTRL/RX_FSM.sv
+Compiling source file /home/IC/integrated_system_syn/RTL/CTRL/SYS_CTRL.sv
+Compiling source file /home/IC/integrated_system_syn/RTL/CTRL/TX_FSM.sv
+Presto compilation completed successfully.
+1
+elaborate -lib work $top_module 
+Loading db file '/opt/Synopsys/Synplify2015/libraries/syn/gtech.db'
+Loading db file '/opt/Synopsys/Synplify2015/libraries/syn/standard.sldb'
+  Loading link library 'scmetro_tsmc_cl013g_rvt_ss_1p08v_125c'
+  Loading link library 'scmetro_tsmc_cl013g_rvt_tt_1p2v_25c'
+  Loading link library 'scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'SYS_TOP'.
+Information: Building the design 'dft_mux'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'SYS_CTRL'. (HDL-193)
+
+Statistics for case statements in always block at line 96 in file
+	'/home/IC/integrated_system_syn/RTL/CTRL/SYS_CTRL.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           101            |    auto/auto     |
+|           105            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine SYS_CTRL line 77 in file
+		'/home/IC/integrated_system_syn/RTL/CTRL/SYS_CTRL.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      Data_reg       | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+|  Current_State_reg  | Flip-flop |   4   |  Y  | N  | Y  | N  | N  | N  | N  |
+|      store_reg      | Flip-flop |   4   |  Y  | N  | Y  | N  | N  | N  | N  |
+|      Valid_reg      | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'ALU'. (HDL-193)
+
+Statistics for case statements in always block at line 43 in file
+	'/home/IC/integrated_system_syn/RTL/ALU/ALU.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            50            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine ALU line 26 in file
+		'/home/IC/integrated_system_syn/RTL/ALU/ALU.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     ALU_OUT_reg     | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    OUT_Valid_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Clock_Gating'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'Reg_File'. (HDL-193)
+
+Inferred memory devices in process
+	in routine Reg_File line 35 in file
+		'/home/IC/integrated_system_syn/RTL/REGFile/Reg_File.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       mem_reg       | Flip-flop |  125  |  Y  | N  | Y  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   3   |  Y  | N  | N  | Y  | N  | N  | N  |
+|  RdData_Valid_reg   | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|     RdData_reg      | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+===========================================================
+| block name/line  | Inputs | Outputs | # sel inputs | MB |
+===========================================================
+|   Reg_File/67    |   16   |    8    |      4       | N  |
+===========================================================
+Presto compilation completed successfully.
+Information: Building the design 'RST_SYNC'. (HDL-193)
+
+Inferred memory devices in process
+	in routine RST_SYNC line 15 in file
+		'/home/IC/integrated_system_syn/RTL/RST_SYNC/RST_SYNC.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      Sync_reg       | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'DATA_SYNC'. (HDL-193)
+
+Inferred memory devices in process
+	in routine DATA_SYNC line 27 in file
+		'/home/IC/integrated_system_syn/RTL/DATA_SYNC/DATA_SYNC.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     Sync_en_reg     | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine DATA_SYNC line 41 in file
+		'/home/IC/integrated_system_syn/RTL/DATA_SYNC/DATA_SYNC.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    pulse_reg_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine DATA_SYNC line 55 in file
+		'/home/IC/integrated_system_syn/RTL/DATA_SYNC/DATA_SYNC.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  enable_pulse_reg   | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine DATA_SYNC line 69 in file
+		'/home/IC/integrated_system_syn/RTL/DATA_SYNC/DATA_SYNC.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    sync_bus_reg     | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Prescale_Mux'. (HDL-193)
+
+Statistics for case statements in always block at line 6 in file
+	'/home/IC/integrated_system_syn/RTL/Prescale_Mux/Prescale_Mux.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            8             |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'ClkDiv'. (HDL-193)
+
+Inferred memory devices in process
+	in routine ClkDiv line 45 in file
+		'/home/IC/integrated_system_syn/RTL/ClkDiv/ClkDiv.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     Counter_reg     | Flip-flop |   7   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine ClkDiv line 70 in file
+		'/home/IC/integrated_system_syn/RTL/ClkDiv/ClkDiv.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     div_clk_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'ASYC_FIFO'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'Pulse_Gen'. (HDL-193)
+
+Inferred memory devices in process
+	in routine Pulse_Gen line 14 in file
+		'/home/IC/integrated_system_syn/RTL/Pulse_Gen/Pulse_Gen.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    Pulse_reg_reg    | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'UART_TX'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'UART_RX'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'FIFO_Memory' instantiated from design 'ASYC_FIFO' with
+	the parameters "BUS_WIDTH=8,ADDR_WIDTH=3,DEPTH=8". (HDL-193)
+
+Inferred memory devices in process
+	in routine FIFO_Memory_BUS_WIDTH8_ADDR_WIDTH3_DEPTH8 line 33 in file
+		'/home/IC/integrated_system_syn/RTL/ASYC_FIFO/FIFO_Memory.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       MEM_reg       | Flip-flop |  64   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+=======================================================================================
+|               block name/line                | Inputs | Outputs | # sel inputs | MB |
+=======================================================================================
+| FIFO_Memory_BUS_WIDTH8_ADDR_WIDTH3_DEPTH8/50 |   8    |    8    |      3       | N  |
+=======================================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Rptr_empty' instantiated from design 'ASYC_FIFO' with
+	the parameters "ADDR_WIDTH=3". (HDL-193)
+
+Inferred memory devices in process
+	in routine Rptr_empty_ADDR_WIDTH3 line 30 in file
+		'/home/IC/integrated_system_syn/RTL/ASYC_FIFO/Rptr_empty.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     R_empty_reg     | Flip-flop |   1   |  N  | N  | N  | Y  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Rptr_empty_ADDR_WIDTH3 line 45 in file
+		'/home/IC/integrated_system_syn/RTL/ASYC_FIFO/Rptr_empty.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      R_ptr_reg      | Flip-flop |   4   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Rptr_empty_ADDR_WIDTH3 line 60 in file
+		'/home/IC/integrated_system_syn/RTL/ASYC_FIFO/Rptr_empty.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      R_bin_reg      | Flip-flop |   4   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Wptr_full' instantiated from design 'ASYC_FIFO' with
+	the parameters "ADDR_WIDTH=3". (HDL-193)
+
+Inferred memory devices in process
+	in routine Wptr_full_ADDR_WIDTH3 line 29 in file
+		'/home/IC/integrated_system_syn/RTL/ASYC_FIFO/Wptr_full.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     W_full_reg      | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Wptr_full_ADDR_WIDTH3 line 43 in file
+		'/home/IC/integrated_system_syn/RTL/ASYC_FIFO/Wptr_full.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      W_ptr_reg      | Flip-flop |   4   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Wptr_full_ADDR_WIDTH3 line 57 in file
+		'/home/IC/integrated_system_syn/RTL/ASYC_FIFO/Wptr_full.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      W_bin_reg      | Flip-flop |   4   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'SYNC' instantiated from design 'ASYC_FIFO' with
+	the parameters "ADDR_WIDTH=3". (HDL-193)
+
+Inferred memory devices in process
+	in routine SYNC_ADDR_WIDTH3 line 23 in file
+		'/home/IC/integrated_system_syn/RTL/ASYC_FIFO/SYNC.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      SYNC_reg       | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'TX_FSM'. (HDL-193)
+
+Statistics for case statements in always block at line 55 in file
+	'/home/IC/integrated_system_syn/RTL/CTRL/TX_FSM.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            61            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine TX_FSM line 41 in file
+		'/home/IC/integrated_system_syn/RTL/CTRL/TX_FSM.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  Current_State_reg  | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Serializer'. (HDL-193)
+
+Inferred memory devices in process
+	in routine Serializer line 25 in file
+		'/home/IC/integrated_system_syn/RTL/UART/UART_TX/Serializer.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    ser_data_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|      count_reg      | Flip-flop |   4   |  Y  | N  | Y  | N  | N  | N  | N  |
+|   serializer_reg    | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Serializer line 47 in file
+		'/home/IC/integrated_system_syn/RTL/UART/UART_TX/Serializer.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    ser_done_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Parity_Calc'. (HDL-193)
+
+Inferred memory devices in process
+	in routine Parity_Calc line 39 in file
+		'/home/IC/integrated_system_syn/RTL/UART/UART_TX/Parity_Calc.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     par_bit_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'MUX'. (HDL-193)
+Warning:  /home/IC/integrated_system_syn/RTL/UART/UART_TX/MUX.v:19: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+
+Statistics for case statements in always block at line 17 in file
+	'/home/IC/integrated_system_syn/RTL/UART/UART_TX/MUX.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            19            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'Parity_Check'. (HDL-193)
+
+Inferred memory devices in process
+	in routine Parity_Check line 39 in file
+		'/home/IC/integrated_system_syn/RTL/UART/UART_RX/Parity_Check.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     Par_err_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Strt_Check'. (HDL-193)
+
+Inferred memory devices in process
+	in routine Strt_Check line 14 in file
+		'/home/IC/integrated_system_syn/RTL/UART/UART_RX/Strt_Check.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   Strt_glitch_reg   | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Stop_Check'. (HDL-193)
+
+Inferred memory devices in process
+	in routine Stop_Check line 15 in file
+		'/home/IC/integrated_system_syn/RTL/UART/UART_RX/Stop_Check.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     Stp_err_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Edge_bit_counter'. (HDL-193)
+
+Statistics for case statements in always block at line 17 in file
+	'/home/IC/integrated_system_syn/RTL/UART/UART_RX/Edge_bit_counter.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            26            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 69 in file
+	'/home/IC/integrated_system_syn/RTL/UART/UART_RX/Edge_bit_counter.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            77            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine Edge_bit_counter line 17 in file
+		'/home/IC/integrated_system_syn/RTL/UART/UART_RX/Edge_bit_counter.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    Edge_cnt_reg     | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Edge_bit_counter line 69 in file
+		'/home/IC/integrated_system_syn/RTL/UART/UART_RX/Edge_bit_counter.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     Bit_cnt_reg     | Flip-flop |   4   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Data_sampling'. (HDL-193)
+
+Statistics for case statements in always block at line 23 in file
+	'/home/IC/integrated_system_syn/RTL/UART/UART_RX/Data_sampling.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            32            |     no/auto      |
+===============================================
+
+Statistics for case statements in always block at line 59 in file
+	'/home/IC/integrated_system_syn/RTL/UART/UART_RX/Data_sampling.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            67            |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine Data_sampling line 23 in file
+		'/home/IC/integrated_system_syn/RTL/UART/UART_RX/Data_sampling.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     Sample_reg      | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Data_sampling line 59 in file
+		'/home/IC/integrated_system_syn/RTL/UART/UART_RX/Data_sampling.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   Sampled_bit_reg   | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Deserializer'. (HDL-193)
+
+Inferred memory devices in process
+	in routine Deserializer line 20 in file
+		'/home/IC/integrated_system_syn/RTL/UART/UART_RX/Deserializer.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     P_DATA_reg      | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'RX_FSM'. (HDL-193)
+
+Statistics for case statements in always block at line 75 in file
+	'/home/IC/integrated_system_syn/RTL/CTRL/RX_FSM.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            87            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine RX_FSM line 61 in file
+		'/home/IC/integrated_system_syn/RTL/CTRL/RX_FSM.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  Current_State_reg  | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+1
+###################### Defining toplevel ###################################
+current_design $top_module
+Current design is 'SYS_TOP'.
+{SYS_TOP}
+#################### Liniking All The Design Parts #########################
+puts "###############################################"
+###############################################
+puts "######## Liniking All The Design Parts ########"
+######## Liniking All The Design Parts ########
+puts "###############################################"
+###############################################
+link 
+
+  Linking design 'SYS_TOP'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (29 designs)              /home/IC/integrated_system_syn/Backend/DFT/SYS_TOP.db, etc
+  scmetro_tsmc_cl013g_rvt_ss_1p08v_125c (library) /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db
+  scmetro_tsmc_cl013g_rvt_tt_1p2v_25c (library) /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db
+  scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c (library) /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db
+
+1
+#################### Liniking All The Design Parts #########################
+puts "###############################################"
+###############################################
+puts "######## checking design consistency ##########"
+######## checking design consistency ##########
+puts "###############################################"
+###############################################
+check_design
+ 
+****************************************
+check_design summary:
+Version:     K-2015.06
+Date:        Tue Sep 30 11:35:38 2025
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     18
+    Unconnected ports (LINT-28)                                     9
+    Shorted outputs (LINT-31)                                       4
+    Constant outputs (LINT-52)                                      5
+
+Cells                                                              22
+    Cells do not drive (LINT-1)                                    20
+    Connected to power or ground (LINT-32)                          2
+--------------------------------------------------------------------------------
+
+Warning: In design 'ALU', cell 'C363' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C364' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C365' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C369' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C394' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C396' does not drive any nets. (LINT-1)
+Warning: In design 'ALU', cell 'C398' does not drive any nets. (LINT-1)
+Warning: In design 'ClkDiv', cell 'C134' does not drive any nets. (LINT-1)
+Warning: In design 'Serializer', cell 'C116' does not drive any nets. (LINT-1)
+Warning: In design 'Edge_bit_counter', cell 'C338' does not drive any nets. (LINT-1)
+Warning: In design 'Edge_bit_counter', cell 'C342' does not drive any nets. (LINT-1)
+Warning: In design 'Edge_bit_counter', cell 'C346' does not drive any nets. (LINT-1)
+Warning: In design 'Edge_bit_counter', cell 'C367' does not drive any nets. (LINT-1)
+Warning: In design 'Edge_bit_counter', cell 'C370' does not drive any nets. (LINT-1)
+Warning: In design 'Edge_bit_counter', cell 'C373' does not drive any nets. (LINT-1)
+Warning: In design 'Deserializer', cell 'B_0' does not drive any nets. (LINT-1)
+Warning: In design 'RX_FSM', cell 'B_16' does not drive any nets. (LINT-1)
+Warning: In design 'RX_FSM', cell 'B_17' does not drive any nets. (LINT-1)
+Warning: In design 'RX_FSM', cell 'B_18' does not drive any nets. (LINT-1)
+Warning: In design 'RX_FSM', cell 'B_19' does not drive any nets. (LINT-1)
+Warning: In design 'SYS_TOP', port 'SE' is not connected to any nets. (LINT-28)
+Warning: In design 'SYS_TOP', port 'SI[3]' is not connected to any nets. (LINT-28)
+Warning: In design 'SYS_TOP', port 'SI[2]' is not connected to any nets. (LINT-28)
+Warning: In design 'SYS_TOP', port 'SI[1]' is not connected to any nets. (LINT-28)
+Warning: In design 'SYS_TOP', port 'SI[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'SYS_TOP', port 'SO[3]' is not connected to any nets. (LINT-28)
+Warning: In design 'SYS_TOP', port 'SO[2]' is not connected to any nets. (LINT-28)
+Warning: In design 'SYS_TOP', port 'SO[1]' is not connected to any nets. (LINT-28)
+Warning: In design 'SYS_TOP', port 'SO[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'Prescale_Mux', output port 'ratio[7]' is connected directly to output port 'ratio[3]'. (LINT-31)
+Warning: In design 'Prescale_Mux', output port 'ratio[7]' is connected directly to output port 'ratio[4]'. (LINT-31)
+Warning: In design 'Prescale_Mux', output port 'ratio[7]' is connected directly to output port 'ratio[5]'. (LINT-31)
+Warning: In design 'Prescale_Mux', output port 'ratio[7]' is connected directly to output port 'ratio[6]'. (LINT-31)
+Warning: In design 'SYS_TOP', a pin on submodule 'RX_ClkDiv' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'i_clk_en' is connected to logic 1. 
+Warning: In design 'SYS_TOP', a pin on submodule 'TX_ClkDiv' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'i_clk_en' is connected to logic 1. 
+Warning: In design 'Prescale_Mux', output port 'ratio[7]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'Prescale_Mux', output port 'ratio[6]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'Prescale_Mux', output port 'ratio[5]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'Prescale_Mux', output port 'ratio[4]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'Prescale_Mux', output port 'ratio[3]' is connected directly to 'logic 0'. (LINT-52)
+1
+#################### Define Design Constraints #########################
+puts "###############################################"
+###############################################
+puts "############ Design Constraints #### ##########"
+############ Design Constraints #### ##########
+puts "###############################################"
+###############################################
+source ./cons.tcl
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Using operating conditions 'scmetro_tsmc_cl013g_rvt_ss_1p08v_125c' found in library 'scmetro_tsmc_cl013g_rvt_ss_1p08v_125c'.
+Using operating conditions 'scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c' found in library 'scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c'.
+#################### Archirecture Scan Chains #########################
+puts "###############################################"
+###############################################
+puts "############ Configure scan chains ############"
+############ Configure scan chains ############
+puts "###############################################"
+###############################################
+set_scan_configuration -clock_mixing no_mix                         -style multiplexed_flip_flop                        -replace true -max_length 100  
+Accepted scan configuration for modes: all_dft
+1
+###################### Mapping and optimization ########################
+puts "###############################################"
+###############################################
+puts "########## Mapping & Optimization #############"
+########## Mapping & Optimization #############
+puts "###############################################"
+###############################################
+#test_ready compile
+compile -scan
+Information: Choosing a test methodology will restrict the optimization of sequential cells. (UIO-12)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | K-2015.06-DWBB_201506.0 |     *     |
+| Licensed DW Building Blocks        |                         |           |
+============================================================================
+
+
+Information: There are 40 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+Warning: Operating condition scmetro_tsmc_cl013g_rvt_ss_1p08v_125c set on design SYS_TOP has different process,
+voltage and temperatures parameters than the parameters at which target library 
+scmetro_tsmc_cl013g_rvt_tt_1p2v_25c is characterized. Delays may be inaccurate as a result. (OPT-998)
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'RX_FSM'
+  Processing 'Deserializer'
+  Processing 'Data_sampling'
+  Processing 'Edge_bit_counter'
+  Processing 'Stop_Check'
+  Processing 'Strt_Check'
+  Processing 'Parity_Check'
+  Processing 'UART_RX'
+  Processing 'MUX'
+  Processing 'Parity_Calc'
+  Processing 'Serializer'
+  Processing 'TX_FSM'
+  Processing 'UART_TX'
+  Processing 'Pulse_Gen'
+  Processing 'SYNC_ADDR_WIDTH3_0'
+  Processing 'Wptr_full_ADDR_WIDTH3'
+  Processing 'Rptr_empty_ADDR_WIDTH3'
+  Processing 'FIFO_Memory_BUS_WIDTH8_ADDR_WIDTH3_DEPTH8'
+  Processing 'ASYC_FIFO'
+  Processing 'ClkDiv_0'
+  Processing 'Prescale_Mux'
+  Processing 'DATA_SYNC'
+  Processing 'RST_SYNC_0'
+  Processing 'Reg_File'
+  Processing 'Clock_Gating'
+  Processing 'ALU'
+  Processing 'SYS_CTRL'
+  Processing 'dft_mux_0'
+  Processing 'dft_mux_1'
+  Processing 'SYS_TOP'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'RX_FSM_DW01_cmp6_0'
+  Processing 'RX_FSM_DW01_dec_0'
+  Processing 'Deserializer_DW01_cmp6_0'
+  Processing 'Deserializer_DW01_dec_0'
+  Processing 'Edge_bit_counter_DW01_inc_0'
+  Processing 'ClkDiv_1_DW01_inc_0'
+  Processing 'ClkDiv_1_DW01_cmp2_0'
+  Processing 'ClkDiv_1_DW01_cmp2_1'
+  Processing 'ClkDiv_1_DW01_dec_0'
+  Processing 'ClkDiv_0_DW01_inc_0'
+  Processing 'ClkDiv_0_DW01_cmp2_0'
+  Processing 'ClkDiv_0_DW01_cmp2_1'
+  Processing 'ClkDiv_0_DW01_dec_0'
+  Processing 'ALU_DW_div_uns_0'
+  Processing 'ALU_DW01_sub_0'
+  Processing 'ALU_DW01_add_0'
+  Processing 'ALU_DW01_cmp6_0'
+  Processing 'ALU_DW02_mult_0'
+  Processing 'ALU_DW01_add_1'
+  Processing 'ClkDiv_1_DW01_sub_0'
+  Processing 'ClkDiv_1_DW01_sub_1'
+  Processing 'ClkDiv_0_DW01_sub_0'
+  Processing 'ClkDiv_0_DW01_sub_1'
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:08   48450.6      0.00       0.0       0.0                          
+    0:00:08   48450.6      0.00       0.0       0.0                          
+    0:00:08   48450.6      0.00       0.0       0.0                          
+    0:00:08   48450.6      0.00       0.0       0.0                          
+    0:00:08   48450.6      0.00       0.0       0.0                          
+    0:00:09   25304.9      0.00       0.0       0.0                          
+    0:00:09   25257.9      0.00       0.0       0.0                          
+    0:00:10   25257.9      0.00       0.0       0.0                          
+    0:00:10   25257.9      0.00       0.0       0.0                          
+    0:00:10   25257.9      0.00       0.0       0.0                          
+    0:00:10   25257.9      0.00       0.0       0.0                          
+    0:00:10   25257.9      0.00       0.0       0.0                          
+    0:00:10   25257.9      0.00       0.0       0.0                          
+    0:00:10   25257.9      0.00       0.0       0.0                          
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:10   25257.9      0.00       0.0       0.0                          
+    0:00:10   25257.9      0.00       0.0       0.0                          
+    0:00:10   25257.9      0.00       0.0       0.0                          
+
+
+  Beginning Area-Recovery Phase  (cleanup)
+  -----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:10   25257.9      0.00       0.0       0.0                          
+    0:00:10   25257.9      0.00       0.0       0.0                          
+    0:00:11   25175.5      0.00       0.0       0.0                          
+    0:00:11   25150.8      0.00       0.0       0.0                          
+    0:00:11   25136.7      0.00       0.0       0.0                          
+    0:00:11   25117.8      0.00       0.0       0.0                          
+    0:00:11   25109.6      0.00       0.0       0.0                          
+    0:00:11   25109.6      0.00       0.0       0.0                          
+    0:00:11   25109.6      0.00       0.0       0.0                          
+    0:00:11   25109.6      0.00       0.0       0.0                          
+    0:00:11   25109.6      0.00       0.0       0.0                          
+    0:00:11   25109.6      0.00       0.0       0.0                          
+    0:00:11   25109.6      0.00       0.0       0.0                          
+    0:00:11   25109.6      0.00       0.0       0.0                          
+    0:00:11   25127.3      0.00       0.0       0.0                          
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db'
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db'
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+1
+################################################################### 
+# Setting Test Timing Variables
+################################################################### 
+# Preclock Measure Protocol (default protocol)
+set test_default_period 100 
+100
+set test_default_delay 0
+0
+set test_default_bidir_delay 0
+0
+set test_default_strobe 20
+20
+set test_default_strobe_width 0
+0
+########################## Define DFT Signals ##########################
+set_dft_signal -port [get_ports scan_clk]  -type ScanClock   -view existing_dft  -timing {30 60}
+Accepted dft signal specification for modes: all_dft
+1
+set_dft_signal -port [get_ports scan_rst]  -type Reset       -view existing_dft  -active_state 0
+Accepted dft signal specification for modes: all_dft
+1
+set_dft_signal -port [get_ports test_mode] -type Constant    -view existing_dft  -active_state 1 
+Accepted dft signal specification for modes: all_dft
+1
+set_dft_signal -port [get_ports test_mode] -type TestMode    -view spec          -active_state 1 
+Accepted dft signal specification for modes: all_dft
+1
+set_dft_signal -port [get_ports SE]        -type ScanEnable  -view spec          -active_state 1   -usage scan
+Accepted dft signal specification for modes: all_dft
+1
+set_dft_signal -port [get_ports SI]        -type ScanDataIn  -view spec 
+Accepted dft signal specification for modes: all_dft
+1
+set_dft_signal -port [get_ports SO]        -type ScanDataOut -view spec  
+Accepted dft signal specification for modes: all_dft
+1
+############################# Create Test Protocol #######################
+create_test_protocol
+In mode: all_dft...
+
+Information: Starting test protocol creation. (TEST-219)
+  ...reading user specified clock signals...
+Information: Identified system/test clock port scan_clk (30.0,60.0). (TEST-265)
+  ...reading user specified asynchronous signals...
+Information: Identified active low asynchronous control port scan_rst. (TEST-266)
+1
+###################### Pre-DFT Design Rule Checking #######################
+dft_drc -verbose
+In mode: all_dft...
+  Pre-DFT DRC enabled
+
+Information: Starting test design rule checking. (TEST-222)
+  Loading test protocol
+  ...basic checks...
+  ...basic sequential cell checks...
+  	...checking for scan equivalents...
+  ...checking vector rules...
+  ...checking pre-dft rules...
+
+-----------------------------------------------------------------
+Begin Other violations...
+
+Warning: Cell U_Clock_Gating/U0_clk_gate has constant 1 value. (TEST-505)
+
+Other violations completed...
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+  DRC Report
+
+  Total violations: 1
+
+-----------------------------------------------------------------
+
+1 OTHER VIOLATION
+     1 Cell is constant 1 violation (TEST-505)
+
+
+Warning: Violations occurred during test design rule checking. (TEST-124)
+
+-----------------------------------------------------------------
+  Sequential Cell Report
+
+  1 out of 349 sequential cells have violations
+
+-----------------------------------------------------------------
+
+SEQUENTIAL CELLS WITH VIOLATIONS
+      *   1 cell has constant 1 value
+         U_Clock_Gating/U0_clk_gate
+SEQUENTIAL CELLS WITHOUT VIOLATIONS
+      * 348 cells are valid scan cells
+         U_SYS_CTRL/Data_reg[0]
+         U_SYS_CTRL/Data_reg[1]
+         U_SYS_CTRL/Data_reg[2]
+         U_SYS_CTRL/Data_reg[3]
+         U_SYS_CTRL/Data_reg[4]
+         U_SYS_CTRL/Data_reg[5]
+         U_SYS_CTRL/Data_reg[6]
+         U_SYS_CTRL/Data_reg[7]
+         U_SYS_CTRL/store_reg[3]
+         U_SYS_CTRL/store_reg[2]
+         U_SYS_CTRL/store_reg[1]
+         U_SYS_CTRL/Valid_reg
+         U_SYS_CTRL/store_reg[0]
+         U_SYS_CTRL/Current_State_reg[3]
+         U_SYS_CTRL/Current_State_reg[0]
+         U_SYS_CTRL/Current_State_reg[2]
+         U_SYS_CTRL/Current_State_reg[1]
+         U_ALU/ALU_OUT_reg[7]
+         U_ALU/ALU_OUT_reg[6]
+         U_ALU/ALU_OUT_reg[5]
+         U_ALU/ALU_OUT_reg[4]
+         U_ALU/ALU_OUT_reg[3]
+         U_ALU/ALU_OUT_reg[2]
+         U_ALU/ALU_OUT_reg[1]
+         U_ALU/ALU_OUT_reg[0]
+         U_ALU/ALU_OUT_reg[15]
+         U_ALU/ALU_OUT_reg[14]
+         U_ALU/ALU_OUT_reg[13]
+         U_ALU/ALU_OUT_reg[12]
+         U_ALU/ALU_OUT_reg[11]
+         U_ALU/ALU_OUT_reg[10]
+         U_ALU/ALU_OUT_reg[9]
+         U_ALU/ALU_OUT_reg[8]
+         U_ALU/OUT_Valid_reg
+         U_Reg_File/mem_reg[13][7]
+         U_Reg_File/mem_reg[13][6]
+         U_Reg_File/mem_reg[13][5]
+         U_Reg_File/mem_reg[13][4]
+         U_Reg_File/mem_reg[13][3]
+         U_Reg_File/mem_reg[13][2]
+         U_Reg_File/mem_reg[13][1]
+         U_Reg_File/mem_reg[13][0]
+         U_Reg_File/mem_reg[9][7]
+         U_Reg_File/mem_reg[9][6]
+         U_Reg_File/mem_reg[9][5]
+         U_Reg_File/mem_reg[9][4]
+         U_Reg_File/mem_reg[9][3]
+         U_Reg_File/mem_reg[9][2]
+         U_Reg_File/mem_reg[9][1]
+         U_Reg_File/mem_reg[9][0]
+         U_Reg_File/mem_reg[5][7]
+         U_Reg_File/mem_reg[5][6]
+         U_Reg_File/mem_reg[5][5]
+         U_Reg_File/mem_reg[5][4]
+         U_Reg_File/mem_reg[5][3]
+         U_Reg_File/mem_reg[5][2]
+         U_Reg_File/mem_reg[5][1]
+         U_Reg_File/mem_reg[5][0]
+         U_Reg_File/mem_reg[15][7]
+         U_Reg_File/mem_reg[15][6]
+         U_Reg_File/mem_reg[15][5]
+         U_Reg_File/mem_reg[15][4]
+         U_Reg_File/mem_reg[15][3]
+         U_Reg_File/mem_reg[15][2]
+         U_Reg_File/mem_reg[15][1]
+         U_Reg_File/mem_reg[15][0]
+         U_Reg_File/mem_reg[11][7]
+         U_Reg_File/mem_reg[11][6]
+         U_Reg_File/mem_reg[11][5]
+         U_Reg_File/mem_reg[11][4]
+         U_Reg_File/mem_reg[11][3]
+         U_Reg_File/mem_reg[11][2]
+         U_Reg_File/mem_reg[11][1]
+         U_Reg_File/mem_reg[11][0]
+         U_Reg_File/mem_reg[7][7]
+         U_Reg_File/mem_reg[7][6]
+         U_Reg_File/mem_reg[7][5]
+         U_Reg_File/mem_reg[7][4]
+         U_Reg_File/mem_reg[7][3]
+         U_Reg_File/mem_reg[7][2]
+         U_Reg_File/mem_reg[7][1]
+         U_Reg_File/mem_reg[7][0]
+         U_Reg_File/mem_reg[14][7]
+         U_Reg_File/mem_reg[14][6]
+         U_Reg_File/mem_reg[14][5]
+         U_Reg_File/mem_reg[14][4]
+         U_Reg_File/mem_reg[14][3]
+         U_Reg_File/mem_reg[14][2]
+         U_Reg_File/mem_reg[14][1]
+         U_Reg_File/mem_reg[14][0]
+         U_Reg_File/mem_reg[10][7]
+         U_Reg_File/mem_reg[10][6]
+         U_Reg_File/mem_reg[10][5]
+         U_Reg_File/mem_reg[10][4]
+         U_Reg_File/mem_reg[10][3]
+         U_Reg_File/mem_reg[10][2]
+         U_Reg_File/mem_reg[10][1]
+         U_Reg_File/mem_reg[10][0]
+         U_Reg_File/mem_reg[6][7]
+         U_Reg_File/mem_reg[6][6]
+         U_Reg_File/mem_reg[6][5]
+         U_Reg_File/mem_reg[6][4]
+         U_Reg_File/mem_reg[6][3]
+         U_Reg_File/mem_reg[6][2]
+         U_Reg_File/mem_reg[6][1]
+         U_Reg_File/mem_reg[6][0]
+         U_Reg_File/mem_reg[12][7]
+         U_Reg_File/mem_reg[12][6]
+         U_Reg_File/mem_reg[12][5]
+         U_Reg_File/mem_reg[12][4]
+         U_Reg_File/mem_reg[12][3]
+         U_Reg_File/mem_reg[12][2]
+         U_Reg_File/mem_reg[12][1]
+         U_Reg_File/mem_reg[12][0]
+         U_Reg_File/mem_reg[8][7]
+         U_Reg_File/mem_reg[8][6]
+         U_Reg_File/mem_reg[8][5]
+         U_Reg_File/mem_reg[8][4]
+         U_Reg_File/mem_reg[8][3]
+         U_Reg_File/mem_reg[8][2]
+         U_Reg_File/mem_reg[8][1]
+         U_Reg_File/mem_reg[8][0]
+         U_Reg_File/mem_reg[4][7]
+         U_Reg_File/mem_reg[4][6]
+         U_Reg_File/mem_reg[4][5]
+         U_Reg_File/mem_reg[4][4]
+         U_Reg_File/mem_reg[4][3]
+         U_Reg_File/mem_reg[4][2]
+         U_Reg_File/mem_reg[4][1]
+         U_Reg_File/mem_reg[4][0]
+         U_Reg_File/RdData_reg[7]
+         U_Reg_File/RdData_reg[6]
+         U_Reg_File/RdData_reg[5]
+         U_Reg_File/RdData_reg[4]
+         U_Reg_File/RdData_reg[3]
+         U_Reg_File/RdData_reg[2]
+         U_Reg_File/RdData_reg[1]
+         U_Reg_File/RdData_reg[0]
+         U_Reg_File/mem_reg[2][0]
+         U_Reg_File/mem_reg[1][7]
+         U_Reg_File/mem_reg[1][6]
+         U_Reg_File/mem_reg[1][1]
+         U_Reg_File/mem_reg[0][7]
+         U_Reg_File/mem_reg[0][6]
+         U_Reg_File/mem_reg[0][5]
+         U_Reg_File/mem_reg[0][4]
+         U_Reg_File/mem_reg[0][3]
+         U_Reg_File/mem_reg[0][2]
+         U_Reg_File/mem_reg[0][1]
+         U_Reg_File/mem_reg[0][0]
+         U_Reg_File/mem_reg[2][1]
+         U_Reg_File/mem_reg[1][4]
+         U_Reg_File/mem_reg[1][5]
+         U_Reg_File/mem_reg[3][7]
+         U_Reg_File/RdData_Valid_reg
+         U_Reg_File/mem_reg[3][6]
+         U_Reg_File/mem_reg[3][3]
+         U_Reg_File/mem_reg[3][4]
+         U_Reg_File/mem_reg[3][5]
+         U_Reg_File/mem_reg[3][0]
+         U_Reg_File/mem_reg[3][2]
+         U_Reg_File/mem_reg[3][1]
+         U_Reg_File/mem_reg[2][7]
+         U_Reg_File/mem_reg[2][4]
+         U_Reg_File/mem_reg[2][3]
+         U_Reg_File/mem_reg[2][2]
+         U_Reg_File/mem_reg[2][5]
+         U_Reg_File/mem_reg[1][2]
+         U_Reg_File/mem_reg[1][3]
+         U_Reg_File/mem_reg[1][0]
+         U_Reg_File/mem_reg[2][6]
+         RST_SYNC_1/Sync_reg[1]
+         RST_SYNC_1/Sync_reg[0]
+         U_DATA_SYNC/pulse_reg_reg
+         U_DATA_SYNC/sync_bus_reg[7]
+         U_DATA_SYNC/sync_bus_reg[5]
+         U_DATA_SYNC/sync_bus_reg[4]
+         U_DATA_SYNC/sync_bus_reg[6]
+         U_DATA_SYNC/sync_bus_reg[3]
+         U_DATA_SYNC/sync_bus_reg[0]
+         U_DATA_SYNC/sync_bus_reg[1]
+         U_DATA_SYNC/sync_bus_reg[2]
+         U_DATA_SYNC/enable_pulse_reg
+         U_DATA_SYNC/Sync_en_reg[0]
+         U_DATA_SYNC/Sync_en_reg[1]
+         RX_ClkDiv/Counter_reg[6]
+         RX_ClkDiv/div_clk_reg
+         RX_ClkDiv/Counter_reg[0]
+         RX_ClkDiv/Counter_reg[1]
+         RX_ClkDiv/Counter_reg[4]
+         RX_ClkDiv/Counter_reg[3]
+         RX_ClkDiv/Counter_reg[2]
+         RX_ClkDiv/Counter_reg[5]
+         U_Pulse_Gen/Pulse_reg_reg[0]
+         U_Pulse_Gen/Pulse_reg_reg[1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[5][3]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[5][2]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[5][1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[5][0]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[1][3]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[1][2]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[1][1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[1][0]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[7][3]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[7][2]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[7][1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[7][0]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[3][3]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[3][2]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[3][1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[3][0]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[6][3]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[6][2]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[6][1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[6][0]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[2][3]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[2][2]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[2][1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[2][0]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[4][3]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[4][2]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[4][1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[4][0]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[0][3]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[0][2]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[0][1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[0][0]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[5][7]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[5][6]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[5][5]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[5][4]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[1][7]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[1][6]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[1][5]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[1][4]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[7][7]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[7][6]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[7][5]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[7][4]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[3][7]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[3][6]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[3][5]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[3][4]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[6][7]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[6][6]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[6][5]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[6][4]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[2][7]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[2][6]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[2][5]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[2][4]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[4][7]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[4][6]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[4][5]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[4][4]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[0][7]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[0][6]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[0][5]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[0][4]
+         U_ASYC_FIFO/Rptr_empty/R_bin_reg[3]
+         U_ASYC_FIFO/Rptr_empty/R_bin_reg[0]
+         U_ASYC_FIFO/Rptr_empty/R_bin_reg[2]
+         U_ASYC_FIFO/Rptr_empty/R_bin_reg[1]
+         U_ASYC_FIFO/Rptr_empty/R_ptr_reg[0]
+         U_ASYC_FIFO/Rptr_empty/R_ptr_reg[3]
+         U_ASYC_FIFO/Rptr_empty/R_ptr_reg[2]
+         U_ASYC_FIFO/Rptr_empty/R_ptr_reg[1]
+         U_ASYC_FIFO/Rptr_empty/R_empty_reg
+         U_ASYC_FIFO/Wptr_full/W_bin_reg[3]
+         U_ASYC_FIFO/Wptr_full/W_bin_reg[2]
+         U_ASYC_FIFO/Wptr_full/W_bin_reg[0]
+         U_ASYC_FIFO/Wptr_full/W_bin_reg[1]
+         U_ASYC_FIFO/Wptr_full/W_full_reg
+         U_ASYC_FIFO/Wptr_full/W_ptr_reg[0]
+         U_ASYC_FIFO/Wptr_full/W_ptr_reg[3]
+         U_ASYC_FIFO/Wptr_full/W_ptr_reg[2]
+         U_ASYC_FIFO/Wptr_full/W_ptr_reg[1]
+         U_ASYC_FIFO/SYNC_r2w/SYNC_reg[3][1]
+         U_ASYC_FIFO/SYNC_r2w/SYNC_reg[2][1]
+         U_ASYC_FIFO/SYNC_r2w/SYNC_reg[1][1]
+         U_ASYC_FIFO/SYNC_r2w/SYNC_reg[0][1]
+         U_ASYC_FIFO/SYNC_r2w/SYNC_reg[3][0]
+         U_ASYC_FIFO/SYNC_r2w/SYNC_reg[2][0]
+         U_ASYC_FIFO/SYNC_r2w/SYNC_reg[1][0]
+         U_ASYC_FIFO/SYNC_r2w/SYNC_reg[0][0]
+         U_UART_TX/fsm/Current_State_reg[1]
+         U_UART_TX/fsm/Current_State_reg[2]
+         U_UART_TX/fsm/Current_State_reg[0]
+         U_UART_TX/serializer/serializer_reg[7]
+         U_UART_TX/serializer/serializer_reg[6]
+         U_UART_TX/serializer/serializer_reg[5]
+         U_UART_TX/serializer/serializer_reg[4]
+         U_UART_TX/serializer/serializer_reg[3]
+         U_UART_TX/serializer/serializer_reg[2]
+         U_UART_TX/serializer/serializer_reg[1]
+         U_UART_TX/serializer/ser_data_reg
+         U_UART_TX/serializer/ser_done_reg
+         U_UART_TX/serializer/serializer_reg[0]
+         U_UART_TX/serializer/count_reg[2]
+         U_UART_TX/serializer/count_reg[3]
+         U_UART_TX/serializer/count_reg[0]
+         U_UART_TX/serializer/count_reg[1]
+         U_UART_TX/parit_calc/par_bit_reg
+         U_UART_RX/U0_parity_check/Par_err_reg
+         U_UART_RX/U0_strt_check/Strt_glitch_reg
+         U_UART_RX/U0_stop_check/Stp_err_reg
+         U_UART_RX/U0_edge_bit_counter/Bit_cnt_reg[3]
+         U_UART_RX/U0_edge_bit_counter/Bit_cnt_reg[1]
+         U_UART_RX/U0_edge_bit_counter/Bit_cnt_reg[2]
+         U_UART_RX/U0_edge_bit_counter/Edge_cnt_reg[4]
+         U_UART_RX/U0_edge_bit_counter/Bit_cnt_reg[0]
+         U_UART_RX/U0_edge_bit_counter/Edge_cnt_reg[2]
+         U_UART_RX/U0_edge_bit_counter/Edge_cnt_reg[3]
+         U_UART_RX/U0_edge_bit_counter/Edge_cnt_reg[0]
+         U_UART_RX/U0_edge_bit_counter/Edge_cnt_reg[1]
+         U_UART_RX/U0_data_sampling/Sample_reg[2]
+         U_UART_RX/U0_data_sampling/Sample_reg[0]
+         U_UART_RX/U0_data_sampling/Sample_reg[1]
+         U_UART_RX/U0_data_sampling/Sampled_bit_reg
+         U_UART_RX/U0_deserializer/P_DATA_reg[0]
+         U_UART_RX/U0_deserializer/P_DATA_reg[5]
+         U_UART_RX/U0_deserializer/P_DATA_reg[1]
+         U_UART_RX/U0_deserializer/P_DATA_reg[4]
+         U_UART_RX/U0_deserializer/P_DATA_reg[7]
+         U_UART_RX/U0_deserializer/P_DATA_reg[3]
+         U_UART_RX/U0_deserializer/P_DATA_reg[6]
+         U_UART_RX/U0_deserializer/P_DATA_reg[2]
+         U_UART_RX/U0_FSM/Current_State_reg[1]
+         U_UART_RX/U0_FSM/Current_State_reg[0]
+         U_UART_RX/U0_FSM/Current_State_reg[2]
+         RST_SYNC_2/Sync_reg[1]
+         RST_SYNC_2/Sync_reg[0]
+         TX_ClkDiv/Counter_reg[6]
+         TX_ClkDiv/div_clk_reg
+         TX_ClkDiv/Counter_reg[0]
+         TX_ClkDiv/Counter_reg[1]
+         TX_ClkDiv/Counter_reg[4]
+         TX_ClkDiv/Counter_reg[3]
+         TX_ClkDiv/Counter_reg[2]
+         TX_ClkDiv/Counter_reg[5]
+         U_ASYC_FIFO/SYNC_w2r/SYNC_reg[2][1]
+         U_ASYC_FIFO/SYNC_w2r/SYNC_reg[1][1]
+         U_ASYC_FIFO/SYNC_w2r/SYNC_reg[0][1]
+         U_ASYC_FIFO/SYNC_w2r/SYNC_reg[3][0]
+         U_ASYC_FIFO/SYNC_w2r/SYNC_reg[2][0]
+         U_ASYC_FIFO/SYNC_w2r/SYNC_reg[1][0]
+         U_ASYC_FIFO/SYNC_w2r/SYNC_reg[0][0]
+         U_ASYC_FIFO/SYNC_w2r/SYNC_reg[3][1]
+
+Information: Test design rule checking completed. (TEST-123)
+1
+############################# Preview DFT ##############################
+preview_dft -show scan_summary
+  Information: Using test design rule information from previous dft_drc run.
+  Architecting Scan Chains
+
+****************************************
+Preview_dft report
+For    : 'Insert_dft' command
+Design : SYS_TOP
+Version: K-2015.06
+Date   : Tue Sep 30 11:36:04 2025
+****************************************
+
+Number of chains: 4
+Scan methodology: full_scan
+Scan style: multiplexed_flip_flop
+Clock domain: no_mix
+
+Chain      Scan Ports (si --> so)        # of Cells   Inst/Chain               Clock (port, time, edge)
+-----      ----------------------        ----------   ----------               ------------------------
+S 1        SI[3] -->  SO[3]                      87   RST_SYNC_1/Sync_reg[0]   (scan_clk, 30.0, rising) 
+S 2        SI[2] -->  SO[2]                      87   U_ASYC_FIFO/FIFO_memory/MEM_reg[6][2]
+                            (scan_clk, 30.0, rising) 
+S 3        SI[1] -->  SO[1]                      87   U_Reg_File/mem_reg[2][0] (scan_clk, 30.0, rising) 
+S 4        SI[0] -->  SO[0]                      87   U_Reg_File/mem_reg[12][7]
+                            (scan_clk, 30.0, rising) 
+1
+############################# Insert DFT ##############################
+insert_dft
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db'
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db'
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db'
+  Information: Using test design rule information from previous dft_drc run.
+  Architecting Scan Chains
+  Routing Scan Chains
+  Routing Global Signals
+  Mapping New Logic
+Resetting current test mode
+  Beginning Mapping Optimizations
+  -------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+
+
+  Beginning Phase 1 Design Rule Fixing  (max_transition)  (max_capacitance)
+  ------------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:29   25144.9      0.00       0.0      15.4 SE                       
+    0:00:29   25144.9      0.00       0.0      15.4 SE                       
+    0:00:29   25144.9      0.00       0.0      15.4 SE                       
+    0:00:29   25155.5      0.00       0.0      14.8 net11587                 
+    0:00:29   25155.5      0.00       0.0      14.8 net11587                 
+    0:00:29   25155.5      0.00       0.0      14.8 net11587                 
+    0:00:29   25155.5      0.00       0.0      14.8 net11587                 
+    0:00:29   25164.9      0.00       0.0      12.7 net11595                 
+    0:00:29   25179.0      0.00       0.0      11.1 net11588                 
+    0:00:29   25179.0      0.00       0.0      11.1 net11588                 
+    0:00:29   25179.0      0.00       0.0      11.1 net11588                 
+    0:00:29   25188.4      0.00       0.0       9.6 net11604                 
+    0:00:29   25202.6      0.00       0.0       8.4 net11585                 
+    0:00:29   25202.6      0.00       0.0       8.4 net11585                 
+    0:00:29   25202.6      0.00       0.0       8.4 net11585                 
+    0:00:29   25202.6      0.00       0.0       8.0 net11586                 
+    0:00:29   25212.0      0.00       0.0       7.9 net11613                 
+    0:00:29   25199.0      0.00       0.0       5.3 net11600                 
+    0:00:29   25206.1      0.00       0.0       5.3 U_UART_RX/U0_stop_check/Stp_err
+    0:00:29   25193.1      0.00       0.0       5.1 net11610                 
+    0:00:29   25230.8      0.00       0.0       1.5 U_Reg_File/test_se       
+    0:00:29   25230.8      0.00       0.0       1.5 U_Reg_File/test_se       
+    0:00:29   25230.8      0.00       0.0       1.5 U_Reg_File/test_se       
+    0:00:29   25248.5      0.00       0.0       0.5 U_ASYC_FIFO/FIFO_memory/test_se
+    0:00:29   25248.5      0.00       0.0       0.5 U_ASYC_FIFO/FIFO_memory/test_se
+    0:00:29   25248.5      0.00       0.0       0.5 U_ASYC_FIFO/FIFO_memory/test_se
+    0:00:29   25255.5      0.00       0.0       0.5 U_UART_RX/Stop_Error     
+    0:00:29   25264.9      0.00       0.0       0.2 framing_error            
+    0:00:29   25264.9      0.00       0.0       0.2 U_Reg_File/net11631      
+
+
+  Beginning Phase 2 Design Rule Fixing  (max_transition)  (max_capacitance)
+  ------------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+
+1
+compile -scan -incremental
+Information: Choosing a test methodology will restrict the optimization of sequential cells. (UIO-12)
+
+Information: There are 64 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+Warning: Operating condition scmetro_tsmc_cl013g_rvt_ss_1p08v_125c set on design SYS_TOP has different process,
+voltage and temperatures parameters than the parameters at which target library 
+scmetro_tsmc_cl013g_rvt_tt_1p2v_25c is characterized. Delays may be inaccurate as a result. (OPT-998)
+
+  Beginning Pass 1 Mapping  (Incremental)
+  ------------------------
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Mapping Optimizations  (Medium effort)  (Incremental)
+  -------------------------------
+
+  Beginning Incremental Implementation Selection
+  ----------------------------------------------
+  Selecting implementations
+  Selecting implementations
+  Selecting implementations
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:03   25247.3      0.00       0.0       0.2                          
+    0:00:04   25247.3      0.00       0.0       0.2                          
+    0:00:05   25247.3      0.00       0.0       0.2                          
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:05   25247.3      0.00       0.0       0.2                          
+    0:00:05   25260.2      0.00       0.0       0.0                          
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db'
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db'
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+1
+set_svf -off
+1
+###################### Design Rule Checking #######################
+dft_drc -verbose -coverage_estimate
+In mode: Internal_scan...
+  Design has scan chains in this mode
+  Design is scan routed
+  Post-DFT DRC enabled
+
+Information: Starting test design rule checking. (TEST-222)
+  Loading test protocol
+  ...basic checks...
+  ...basic sequential cell checks...
+  ...checking vector rules...
+  ...checking clock rules...
+  ...checking scan chain rules...
+  ...checking scan compression rules...
+  ...checking X-state rules...
+  ...checking tristate rules...
+  ...extracting scan details...
+
+-----------------------------------------------------------------
+Begin Other violations...
+
+Warning: Cell U_Clock_Gating/U0_clk_gate has constant 1 value. (TEST-505)
+
+Other violations completed...
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+  DRC Report
+
+  Total violations: 1
+
+-----------------------------------------------------------------
+
+1 OTHER VIOLATION
+     1 Cell is constant 1 violation (TEST-505)
+
+
+Warning: Violations occurred during test design rule checking. (TEST-124)
+
+-----------------------------------------------------------------
+  Sequential Cell Report
+
+  1 out of 349 sequential cells have violations
+
+-----------------------------------------------------------------
+
+SEQUENTIAL CELLS WITH VIOLATIONS
+      *   1 cell has constant 1 value
+         U_Clock_Gating/U0_clk_gate
+SEQUENTIAL CELLS WITHOUT VIOLATIONS
+      * 348 cells are valid scan cells
+         U_SYS_CTRL/Data_reg[0]
+         U_SYS_CTRL/Data_reg[1]
+         U_SYS_CTRL/Data_reg[2]
+         U_SYS_CTRL/Data_reg[3]
+         U_SYS_CTRL/Data_reg[4]
+         U_SYS_CTRL/Data_reg[5]
+         U_SYS_CTRL/Data_reg[6]
+         U_SYS_CTRL/Data_reg[7]
+         U_SYS_CTRL/store_reg[3]
+         U_SYS_CTRL/store_reg[2]
+         U_SYS_CTRL/store_reg[1]
+         U_SYS_CTRL/Valid_reg
+         U_SYS_CTRL/store_reg[0]
+         U_SYS_CTRL/Current_State_reg[3]
+         U_SYS_CTRL/Current_State_reg[0]
+         U_SYS_CTRL/Current_State_reg[2]
+         U_SYS_CTRL/Current_State_reg[1]
+         U_ALU/ALU_OUT_reg[7]
+         U_ALU/ALU_OUT_reg[6]
+         U_ALU/ALU_OUT_reg[5]
+         U_ALU/ALU_OUT_reg[4]
+         U_ALU/ALU_OUT_reg[3]
+         U_ALU/ALU_OUT_reg[2]
+         U_ALU/ALU_OUT_reg[1]
+         U_ALU/ALU_OUT_reg[0]
+         U_ALU/ALU_OUT_reg[15]
+         U_ALU/ALU_OUT_reg[14]
+         U_ALU/ALU_OUT_reg[13]
+         U_ALU/ALU_OUT_reg[12]
+         U_ALU/ALU_OUT_reg[11]
+         U_ALU/ALU_OUT_reg[10]
+         U_ALU/ALU_OUT_reg[9]
+         U_ALU/ALU_OUT_reg[8]
+         U_ALU/OUT_Valid_reg
+         U_Reg_File/mem_reg[13][7]
+         U_Reg_File/mem_reg[13][6]
+         U_Reg_File/mem_reg[13][5]
+         U_Reg_File/mem_reg[13][4]
+         U_Reg_File/mem_reg[13][3]
+         U_Reg_File/mem_reg[13][2]
+         U_Reg_File/mem_reg[13][1]
+         U_Reg_File/mem_reg[13][0]
+         U_Reg_File/mem_reg[9][7]
+         U_Reg_File/mem_reg[9][6]
+         U_Reg_File/mem_reg[9][5]
+         U_Reg_File/mem_reg[9][4]
+         U_Reg_File/mem_reg[9][3]
+         U_Reg_File/mem_reg[9][2]
+         U_Reg_File/mem_reg[9][1]
+         U_Reg_File/mem_reg[9][0]
+         U_Reg_File/mem_reg[5][7]
+         U_Reg_File/mem_reg[5][6]
+         U_Reg_File/mem_reg[5][5]
+         U_Reg_File/mem_reg[5][4]
+         U_Reg_File/mem_reg[5][3]
+         U_Reg_File/mem_reg[5][2]
+         U_Reg_File/mem_reg[5][1]
+         U_Reg_File/mem_reg[5][0]
+         U_Reg_File/mem_reg[15][7]
+         U_Reg_File/mem_reg[15][6]
+         U_Reg_File/mem_reg[15][5]
+         U_Reg_File/mem_reg[15][4]
+         U_Reg_File/mem_reg[15][3]
+         U_Reg_File/mem_reg[15][2]
+         U_Reg_File/mem_reg[15][1]
+         U_Reg_File/mem_reg[15][0]
+         U_Reg_File/mem_reg[11][7]
+         U_Reg_File/mem_reg[11][6]
+         U_Reg_File/mem_reg[11][5]
+         U_Reg_File/mem_reg[11][4]
+         U_Reg_File/mem_reg[11][3]
+         U_Reg_File/mem_reg[11][2]
+         U_Reg_File/mem_reg[11][1]
+         U_Reg_File/mem_reg[11][0]
+         U_Reg_File/mem_reg[7][7]
+         U_Reg_File/mem_reg[7][6]
+         U_Reg_File/mem_reg[7][5]
+         U_Reg_File/mem_reg[7][4]
+         U_Reg_File/mem_reg[7][3]
+         U_Reg_File/mem_reg[7][2]
+         U_Reg_File/mem_reg[7][1]
+         U_Reg_File/mem_reg[7][0]
+         U_Reg_File/mem_reg[14][7]
+         U_Reg_File/mem_reg[14][6]
+         U_Reg_File/mem_reg[14][5]
+         U_Reg_File/mem_reg[14][4]
+         U_Reg_File/mem_reg[14][3]
+         U_Reg_File/mem_reg[14][2]
+         U_Reg_File/mem_reg[14][1]
+         U_Reg_File/mem_reg[14][0]
+         U_Reg_File/mem_reg[10][7]
+         U_Reg_File/mem_reg[10][6]
+         U_Reg_File/mem_reg[10][5]
+         U_Reg_File/mem_reg[10][4]
+         U_Reg_File/mem_reg[10][3]
+         U_Reg_File/mem_reg[10][2]
+         U_Reg_File/mem_reg[10][1]
+         U_Reg_File/mem_reg[10][0]
+         U_Reg_File/mem_reg[6][7]
+         U_Reg_File/mem_reg[6][6]
+         U_Reg_File/mem_reg[6][5]
+         U_Reg_File/mem_reg[6][4]
+         U_Reg_File/mem_reg[6][3]
+         U_Reg_File/mem_reg[6][2]
+         U_Reg_File/mem_reg[6][1]
+         U_Reg_File/mem_reg[6][0]
+         U_Reg_File/mem_reg[12][7]
+         U_Reg_File/mem_reg[12][6]
+         U_Reg_File/mem_reg[12][5]
+         U_Reg_File/mem_reg[12][4]
+         U_Reg_File/mem_reg[12][3]
+         U_Reg_File/mem_reg[12][2]
+         U_Reg_File/mem_reg[12][1]
+         U_Reg_File/mem_reg[12][0]
+         U_Reg_File/mem_reg[8][7]
+         U_Reg_File/mem_reg[8][6]
+         U_Reg_File/mem_reg[8][5]
+         U_Reg_File/mem_reg[8][4]
+         U_Reg_File/mem_reg[8][3]
+         U_Reg_File/mem_reg[8][2]
+         U_Reg_File/mem_reg[8][1]
+         U_Reg_File/mem_reg[8][0]
+         U_Reg_File/mem_reg[4][7]
+         U_Reg_File/mem_reg[4][6]
+         U_Reg_File/mem_reg[4][5]
+         U_Reg_File/mem_reg[4][4]
+         U_Reg_File/mem_reg[4][3]
+         U_Reg_File/mem_reg[4][2]
+         U_Reg_File/mem_reg[4][1]
+         U_Reg_File/mem_reg[4][0]
+         U_Reg_File/RdData_reg[7]
+         U_Reg_File/RdData_reg[6]
+         U_Reg_File/RdData_reg[5]
+         U_Reg_File/RdData_reg[4]
+         U_Reg_File/RdData_reg[3]
+         U_Reg_File/RdData_reg[2]
+         U_Reg_File/RdData_reg[1]
+         U_Reg_File/RdData_reg[0]
+         U_Reg_File/mem_reg[2][0]
+         U_Reg_File/mem_reg[1][7]
+         U_Reg_File/mem_reg[1][6]
+         U_Reg_File/mem_reg[1][1]
+         U_Reg_File/mem_reg[0][7]
+         U_Reg_File/mem_reg[0][6]
+         U_Reg_File/mem_reg[0][5]
+         U_Reg_File/mem_reg[0][4]
+         U_Reg_File/mem_reg[0][3]
+         U_Reg_File/mem_reg[0][2]
+         U_Reg_File/mem_reg[0][1]
+         U_Reg_File/mem_reg[0][0]
+         U_Reg_File/mem_reg[2][1]
+         U_Reg_File/mem_reg[1][4]
+         U_Reg_File/mem_reg[1][5]
+         U_Reg_File/mem_reg[3][7]
+         U_Reg_File/RdData_Valid_reg
+         U_Reg_File/mem_reg[3][6]
+         U_Reg_File/mem_reg[3][3]
+         U_Reg_File/mem_reg[3][4]
+         U_Reg_File/mem_reg[3][5]
+         U_Reg_File/mem_reg[3][0]
+         U_Reg_File/mem_reg[3][2]
+         U_Reg_File/mem_reg[3][1]
+         U_Reg_File/mem_reg[2][7]
+         U_Reg_File/mem_reg[2][4]
+         U_Reg_File/mem_reg[2][3]
+         U_Reg_File/mem_reg[2][2]
+         U_Reg_File/mem_reg[2][5]
+         U_Reg_File/mem_reg[1][2]
+         U_Reg_File/mem_reg[1][3]
+         U_Reg_File/mem_reg[1][0]
+         U_Reg_File/mem_reg[2][6]
+         RST_SYNC_1/Sync_reg[1]
+         RST_SYNC_1/Sync_reg[0]
+         U_DATA_SYNC/pulse_reg_reg
+         U_DATA_SYNC/sync_bus_reg[7]
+         U_DATA_SYNC/sync_bus_reg[5]
+         U_DATA_SYNC/sync_bus_reg[4]
+         U_DATA_SYNC/sync_bus_reg[6]
+         U_DATA_SYNC/sync_bus_reg[3]
+         U_DATA_SYNC/sync_bus_reg[0]
+         U_DATA_SYNC/sync_bus_reg[1]
+         U_DATA_SYNC/sync_bus_reg[2]
+         U_DATA_SYNC/enable_pulse_reg
+         U_DATA_SYNC/Sync_en_reg[0]
+         U_DATA_SYNC/Sync_en_reg[1]
+         RX_ClkDiv/Counter_reg[6]
+         RX_ClkDiv/div_clk_reg
+         RX_ClkDiv/Counter_reg[0]
+         RX_ClkDiv/Counter_reg[1]
+         RX_ClkDiv/Counter_reg[4]
+         RX_ClkDiv/Counter_reg[3]
+         RX_ClkDiv/Counter_reg[2]
+         RX_ClkDiv/Counter_reg[5]
+         TX_ClkDiv/Counter_reg[6]
+         TX_ClkDiv/div_clk_reg
+         TX_ClkDiv/Counter_reg[0]
+         TX_ClkDiv/Counter_reg[1]
+         TX_ClkDiv/Counter_reg[4]
+         TX_ClkDiv/Counter_reg[3]
+         TX_ClkDiv/Counter_reg[2]
+         TX_ClkDiv/Counter_reg[5]
+         U_Pulse_Gen/Pulse_reg_reg[0]
+         U_Pulse_Gen/Pulse_reg_reg[1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[5][3]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[5][2]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[5][1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[5][0]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[1][3]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[1][2]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[1][1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[1][0]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[7][3]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[7][2]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[7][1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[7][0]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[3][3]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[3][2]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[3][1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[3][0]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[6][3]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[6][2]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[6][1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[6][0]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[2][3]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[2][2]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[2][1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[2][0]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[4][3]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[4][2]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[4][1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[4][0]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[0][3]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[0][2]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[0][1]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[0][0]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[5][7]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[5][6]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[5][5]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[5][4]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[1][7]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[1][6]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[1][5]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[1][4]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[7][7]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[7][6]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[7][5]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[7][4]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[3][7]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[3][6]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[3][5]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[3][4]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[6][7]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[6][6]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[6][5]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[6][4]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[2][7]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[2][6]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[2][5]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[2][4]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[4][7]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[4][6]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[4][5]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[4][4]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[0][7]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[0][6]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[0][5]
+         U_ASYC_FIFO/FIFO_memory/MEM_reg[0][4]
+         U_ASYC_FIFO/Rptr_empty/R_bin_reg[3]
+         U_ASYC_FIFO/Rptr_empty/R_bin_reg[0]
+         U_ASYC_FIFO/Rptr_empty/R_bin_reg[2]
+         U_ASYC_FIFO/Rptr_empty/R_bin_reg[1]
+         U_ASYC_FIFO/Rptr_empty/R_ptr_reg[0]
+         U_ASYC_FIFO/Rptr_empty/R_ptr_reg[3]
+         U_ASYC_FIFO/Rptr_empty/R_ptr_reg[2]
+         U_ASYC_FIFO/Rptr_empty/R_ptr_reg[1]
+         U_ASYC_FIFO/Rptr_empty/R_empty_reg
+         U_ASYC_FIFO/Wptr_full/W_bin_reg[3]
+         U_ASYC_FIFO/Wptr_full/W_bin_reg[2]
+         U_ASYC_FIFO/Wptr_full/W_bin_reg[0]
+         U_ASYC_FIFO/Wptr_full/W_bin_reg[1]
+         U_ASYC_FIFO/Wptr_full/W_full_reg
+         U_ASYC_FIFO/Wptr_full/W_ptr_reg[0]
+         U_ASYC_FIFO/Wptr_full/W_ptr_reg[3]
+         U_ASYC_FIFO/Wptr_full/W_ptr_reg[2]
+         U_ASYC_FIFO/Wptr_full/W_ptr_reg[1]
+         U_ASYC_FIFO/SYNC_r2w/SYNC_reg[3][1]
+         U_ASYC_FIFO/SYNC_r2w/SYNC_reg[2][1]
+         U_ASYC_FIFO/SYNC_r2w/SYNC_reg[1][1]
+         U_ASYC_FIFO/SYNC_r2w/SYNC_reg[0][1]
+         U_ASYC_FIFO/SYNC_r2w/SYNC_reg[3][0]
+         U_ASYC_FIFO/SYNC_r2w/SYNC_reg[2][0]
+         U_ASYC_FIFO/SYNC_r2w/SYNC_reg[1][0]
+         U_ASYC_FIFO/SYNC_r2w/SYNC_reg[0][0]
+         U_ASYC_FIFO/SYNC_w2r/SYNC_reg[2][1]
+         U_ASYC_FIFO/SYNC_w2r/SYNC_reg[1][1]
+         U_ASYC_FIFO/SYNC_w2r/SYNC_reg[0][1]
+         U_ASYC_FIFO/SYNC_w2r/SYNC_reg[3][0]
+         U_ASYC_FIFO/SYNC_w2r/SYNC_reg[2][0]
+         U_ASYC_FIFO/SYNC_w2r/SYNC_reg[1][0]
+         U_ASYC_FIFO/SYNC_w2r/SYNC_reg[0][0]
+         U_ASYC_FIFO/SYNC_w2r/SYNC_reg[3][1]
+         U_UART_TX/fsm/Current_State_reg[1]
+         U_UART_TX/fsm/Current_State_reg[2]
+         U_UART_TX/fsm/Current_State_reg[0]
+         U_UART_TX/serializer/serializer_reg[7]
+         U_UART_TX/serializer/serializer_reg[6]
+         U_UART_TX/serializer/serializer_reg[5]
+         U_UART_TX/serializer/serializer_reg[4]
+         U_UART_TX/serializer/serializer_reg[3]
+         U_UART_TX/serializer/serializer_reg[2]
+         U_UART_TX/serializer/serializer_reg[1]
+         U_UART_TX/serializer/ser_data_reg
+         U_UART_TX/serializer/ser_done_reg
+         U_UART_TX/serializer/serializer_reg[0]
+         U_UART_TX/serializer/count_reg[2]
+         U_UART_TX/serializer/count_reg[3]
+         U_UART_TX/serializer/count_reg[0]
+         U_UART_TX/serializer/count_reg[1]
+         U_UART_TX/parit_calc/par_bit_reg
+         U_UART_RX/U0_parity_check/Par_err_reg
+         U_UART_RX/U0_strt_check/Strt_glitch_reg
+         U_UART_RX/U0_stop_check/Stp_err_reg
+         U_UART_RX/U0_edge_bit_counter/Bit_cnt_reg[3]
+         U_UART_RX/U0_edge_bit_counter/Bit_cnt_reg[1]
+         U_UART_RX/U0_edge_bit_counter/Bit_cnt_reg[2]
+         U_UART_RX/U0_edge_bit_counter/Edge_cnt_reg[4]
+         U_UART_RX/U0_edge_bit_counter/Bit_cnt_reg[0]
+         U_UART_RX/U0_edge_bit_counter/Edge_cnt_reg[2]
+         U_UART_RX/U0_edge_bit_counter/Edge_cnt_reg[3]
+         U_UART_RX/U0_edge_bit_counter/Edge_cnt_reg[0]
+         U_UART_RX/U0_edge_bit_counter/Edge_cnt_reg[1]
+         U_UART_RX/U0_data_sampling/Sample_reg[2]
+         U_UART_RX/U0_data_sampling/Sample_reg[0]
+         U_UART_RX/U0_data_sampling/Sample_reg[1]
+         U_UART_RX/U0_data_sampling/Sampled_bit_reg
+         U_UART_RX/U0_deserializer/P_DATA_reg[0]
+         U_UART_RX/U0_deserializer/P_DATA_reg[5]
+         U_UART_RX/U0_deserializer/P_DATA_reg[1]
+         U_UART_RX/U0_deserializer/P_DATA_reg[4]
+         U_UART_RX/U0_deserializer/P_DATA_reg[7]
+         U_UART_RX/U0_deserializer/P_DATA_reg[3]
+         U_UART_RX/U0_deserializer/P_DATA_reg[6]
+         U_UART_RX/U0_deserializer/P_DATA_reg[2]
+         U_UART_RX/U0_FSM/Current_State_reg[1]
+         U_UART_RX/U0_FSM/Current_State_reg[0]
+         U_UART_RX/U0_FSM/Current_State_reg[2]
+         RST_SYNC_2/Sync_reg[1]
+         RST_SYNC_2/Sync_reg[0]
+
+....Inferring feed-through connections....
+Information: Test design rule checking completed. (TEST-123)
+  Running test coverage estimation...
+ 15648 faults were added to fault list.
+ 0            7203   5244         0/0/0    65.83%      0.01
+ 0            1486   3753         3/0/0    75.42%      0.02
+ 0             886   2865         5/0/0    81.14%      0.02
+ 0             490   2372         7/0/0    84.31%      0.02
+ 0             509   1861         8/0/2    87.60%      0.02
+ 0             409   1446        13/0/3    90.27%      0.02
+ 0             216   1216        21/0/3    91.75%      0.03
+ 0             157   1047        28/0/3    92.83%      0.03
+ 0             127    908        35/0/6    93.73%      0.04
+ 0             135    758        46/0/8    94.69%      0.04
+ 0              84    654       55/0/11    95.36%      0.05
+ 0              88    541       71/0/13    96.08%      0.05
+ 0              85    432       82/0/14    96.78%      0.05
+ 0              59    349       96/0/18    97.32%      0.06
+ 0              61    251      112/0/20    97.95%      0.06
+ 0              50    174      130/0/21    98.45%      0.07
+ 0              47     70      161/0/22    99.13%      0.07
+ 0               5     62      164/0/22    99.18%      0.07
+ 
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                           0
+ -----------------------------------------------
+ 
+
+     Uncollapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT      15119
+ Possibly detected                PT          0
+ Undetectable                     UD        404
+ ATPG untestable                  AU         63
+ Not detected                     ND         62
+ -----------------------------------------------
+ total faults                             15648
+ test coverage                            99.18%
+ -----------------------------------------------
+  Information: The test coverage above may be inferior
+               than the real test coverage with customized
+               protocol and test simulation library.
+1
+#############################################################################
+# Write out files
+#############################################################################
+write_file -format verilog -hierarchy -output netlists/$top_module.ddc
+Writing verilog file '/home/IC/integrated_system_syn/Backend/DFT/netlists/SYS_TOP.ddc'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+Warning: Verilog writer has added 5 nets to module SYS_TOP using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+1
+write_file -format verilog -hierarchy -output netlists/$top_module.v
+Writing verilog file '/home/IC/integrated_system_syn/Backend/DFT/netlists/SYS_TOP.v'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+Warning: Verilog writer has added 5 nets to module SYS_TOP using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+1
+write_sdf  sdf/$top_module.sdf
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/home/IC/integrated_system_syn/Backend/DFT/sdf/SYS_TOP.sdf'. (WT-3)
+Information: Updating design information... (UID-85)
+1
+write_sdc  -nosplit sdc/$top_module.sdc
+1
+####################### reporting ##########################################
+report_area -hierarchy > reports/area.rpt
+report_power -hierarchy > reports/power.rpt
+report_timing -max_paths 100 -delay_type min > reports/hold.rpt
+report_timing -max_paths 100 -delay_type max > reports/setup.rpt
+report_clock -attributes > reports/clocks.rpt
+report_constraint -all_violators -nosplit > reports/constraints.rpt
+report_port > reports/ports.rpt
+dft_drc -coverage > reports/dft_drc_post_dft.rpt
+################# starting graphical user interface #######################
+#gui_start
+#exit
+dc_shell> exit
+
+Memory usage for main task 319 Mbytes.
+Memory usage for this session 319 Mbytes.
+CPU usage for this session 29 seconds ( 0.01 hours ).
+
+Thank you...

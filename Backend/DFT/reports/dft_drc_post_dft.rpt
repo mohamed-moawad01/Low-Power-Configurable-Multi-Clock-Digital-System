@@ -1,0 +1,101 @@
+In mode: Internal_scan...
+  Design has scan chains in this mode
+  Design is scan routed
+  Post-DFT DRC enabled
+
+Information: Starting test design rule checking. (TEST-222)
+  Loading test protocol
+  ...basic checks...
+  ...basic sequential cell checks...
+  ...checking vector rules...
+  ...checking clock rules...
+  ...checking scan chain rules...
+  ...checking scan compression rules...
+  ...checking X-state rules...
+  ...checking tristate rules...
+  ...extracting scan details...
+
+-----------------------------------------------------------------
+Begin Other violations...
+
+Warning: Cell U_Clock_Gating/U0_clk_gate has constant 1 value. (TEST-505)
+
+Other violations completed...
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+  DRC Report
+
+  Total violations: 1
+
+-----------------------------------------------------------------
+
+1 OTHER VIOLATION
+     1 Cell is constant 1 violation (TEST-505)
+
+
+Warning: Violations occurred during test design rule checking. (TEST-124)
+
+-----------------------------------------------------------------
+  Sequential Cell Report
+
+  1 out of 349 sequential cells have violations
+
+-----------------------------------------------------------------
+
+SEQUENTIAL CELLS WITH VIOLATIONS
+      *   1 cell has constant 1 value
+SEQUENTIAL CELLS WITHOUT VIOLATIONS
+      * 348 cells are valid scan cells
+
+Information: Test design rule checking completed. (TEST-123)
+  Running test coverage estimation...
+ 15648 faults were added to fault list.
+ ATPG performed for stuck fault model using internal pattern source.
+ ----------------------------------------------------------
+ #patterns     #faults     #ATPG faults  test      process
+ stored     detect/active  red/au/abort  coverage  CPU time
+ ---------  -------------  ------------  --------  --------
+ Begin deterministic ATPG: #uncollapsed_faults=12447, abort_limit=10...
+ 0            7203   5244         0/0/0    65.83%      0.01
+ 0            1486   3753         3/0/0    75.42%      0.01
+ 0             886   2865         5/0/0    81.14%      0.01
+ 0             490   2372         7/0/0    84.31%      0.02
+ 0             509   1861         8/0/2    87.60%      0.02
+ 0             409   1446        13/0/3    90.27%      0.03
+ 0             216   1216        21/0/3    91.75%      0.03
+ 0             157   1047        28/0/3    92.83%      0.03
+ 0             127    908        35/0/6    93.73%      0.03
+ 0             135    758        46/0/8    94.69%      0.03
+ 0              84    654       55/0/11    95.36%      0.04
+ 0              88    541       71/0/13    96.08%      0.04
+ 0              85    432       82/0/14    96.78%      0.05
+ 0              59    349       96/0/18    97.32%      0.05
+ 0              61    251      112/0/20    97.95%      0.05
+ 0              50    174      130/0/21    98.45%      0.07
+ 0              47     70      161/0/22    99.13%      0.07
+ 0               5     62      164/0/22    99.18%      0.07
+ 
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                           0
+ -----------------------------------------------
+ 
+
+     Uncollapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT      15119
+ Possibly detected                PT          0
+ Undetectable                     UD        404
+ ATPG untestable                  AU         63
+ Not detected                     ND         62
+ -----------------------------------------------
+ total faults                             15648
+ test coverage                            99.18%
+ -----------------------------------------------
+  Information: The test coverage above may be inferior
+               than the real test coverage with customized
+               protocol and test simulation library.
+1
